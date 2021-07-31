@@ -1,0 +1,37 @@
+GET /product/<product_id>
+
+curl --location --request GET 'localhost:5000/product/SIHIL' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d'
+
+
+POST /product
+
+curl --location --request POST 'localhost:5000/product' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "SIHIL",
+    "name": "Sihil",
+    "description": "Magic sword made by the dwarves of Mahakam",
+    "unit_price": 1458000
+}'
+
+
+PUT /product
+
+curl --location --request PUT 'localhost:5000/product' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "SIHIL",
+    "name": "Better Sihil",
+    "description": "Magic sword made by the dwarves of Mahakam",
+    "unit_price": 1458001
+}'
+
+
+DELETE /product
+
+curl --location --request DELETE 'localhost:5000/product/SIHIL' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d'
+

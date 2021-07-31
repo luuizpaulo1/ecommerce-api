@@ -1,0 +1,94 @@
+GET /order
+
+curl --location --request GET 'localhost:5000/order/74d7a60c-3f26-438e-b29c-07501efd12a7' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--data-raw ''
+
+
+
+POST /order
+
+curl --location --request POST 'localhost:5000/order' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "client_id": "909dbfe1-2276-40f8-ba97-8561f29c780e",
+    "status": "WAITING_PAYMENT",
+    "products": [
+        {
+            "id": "SIHIL",
+            "quantity": 1
+        }
+    ]
+}'
+
+
+
+PUT /order
+
+curl --location --request PUT 'localhost:5000/order' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "8cc8f44b-175b-43d4-9898-846074d7c204",
+    "status": "PAID"
+}'
+
+
+
+DELETE /order
+curl --location --request DELETE 'localhost:5000/order/74d7a60c-3f26-438e-b29c-07501efd12a7' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "client_id": "5d45aed6-3633-4ec2-bcfb-fa6b782d4d92",
+    "status": "WAITING_PAYMENT",
+    "products": [
+        {
+            "id": "SIHIL",
+            "quantity": 1
+        }
+    ]
+}'
+
+
+
+GET /order/<order_id>/products
+
+curl --location --request GET 'localhost:5000/order/8cc8f44b-175b-43d4-9898-846074d7c204/products' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--data-raw ''
+
+
+
+POST /order/add_products
+
+curl --location --request POST 'localhost:5000/order/add_products' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "order_id": "8cc8f44b-175b-43d4-9898-846074d7c244",
+    "products": [
+        {
+            "id": "SIHIL",
+            "quantity": 10
+        }
+    ]
+}'
+
+
+
+POST /order/remove_products
+
+curl --location --request POST 'localhost:5000/order/remove_products' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "order_id": "8cc8f44b-175b-43d4-9898-846074d7c204",
+    "products": [
+        {
+            "id": "SIHIL",
+            "quantity": 48
+        }
+    ]
+}'

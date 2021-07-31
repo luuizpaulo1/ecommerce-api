@@ -1,0 +1,43 @@
+GET /client/<order_id>
+
+curl --location --request GET 'localhost:5000/client/d22c33ea-f775-4051-b4db-a9ea83ec362b' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--data-raw ''
+
+POST /client
+
+curl --location --request POST 'localhost:5000/client' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Geralt of Rivia",
+    "birth_date": "1151-10-19",
+    "document": "12345678910"
+}'
+
+PUT /client
+
+curl --location --request PUT 'localhost:5000/client' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "9365489c-d96c-4ae9-b29a-775820a9e615",
+    "name": "Luizão Andrade",
+    "birth_date": "2000-10-19",
+    "document": "18881897709"
+}'
+
+DELETE /client
+
+curl --location --request DELETE 'localhost:5000/client/d22c33ea-f775-4051-b4db-a9ea83ec362b' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--data-raw ''
+
+
+GET /client/<client_id>/orders
+
+curl --location --request GET 'localhost:5000/client/909dbfe1-2276-40f8-ba97-8561f29c780e/orders' \
+--header 'Authorization: 23c6834b1d353eabf976e524ed489c812ff86a7d' \
+--data-raw ''
+
+
