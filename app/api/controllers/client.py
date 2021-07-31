@@ -70,4 +70,4 @@ class ClientController(Resource):
             client.delete()
             return None, 204
         else:
-            return {'msg': f'Product ID \'{client_id}\' not found'}, 404
+            return {'msg': f'Client ID \'{client_id}\' not found'}, 404
