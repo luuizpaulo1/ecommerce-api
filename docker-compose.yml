@@ -1,0 +1,53 @@
+version: "3.7"
+
+services:
+
+  database:
+    image: postgres:12.7
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456789
+      - POSTGRES_DB=postgres
+    ports:
+      - "15432:5432"
+    networks:
+      - postgres-compose-network
+    restart: always
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  test_database:
+    image: postgres:12.7
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456789
+      - DB_HOST=test_database
+      - POSTGRES_DB=test
+    ports:
+      - "15432:5432"
+    networks:
+      - postgres-compose-network
+    restart: always
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  ecommerce-api:
+    build:
+      context: ./
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=123456789
+      - DB_DATABASE=postgres
+      - DB_HOST=database
+      - DB_PORT=5432
+      - APP_TOKEN=23c6834b1d353eabf976e524ed489c812ff86a7d
+    depends_on:
+      - database
+    networks:
+      - postgres-compose-network
+
+networks:
+  postgres-compose-network:
+    driver: bridge

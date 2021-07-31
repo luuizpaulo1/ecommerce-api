@@ -8,8 +8,9 @@ flask = "*"
 flask-sqlalchemy = "*"
 flask-restful = "*"
 sqlalchemy = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.7"
+python_version = "3.9.5"
